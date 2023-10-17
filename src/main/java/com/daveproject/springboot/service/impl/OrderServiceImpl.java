@@ -8,9 +8,12 @@ import com.daveproject.springboot.exception.PaymentException;
 import com.daveproject.springboot.repository.OrderRepository;
 import com.daveproject.springboot.repository.PaymentRepository;
 import com.daveproject.springboot.service.OrderService;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
+@Service
 public class OrderServiceImpl implements OrderService {
 
 
@@ -23,6 +26,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    @Transactional(rollbackFor = PaymentException.class)
     public OrderResponse  placeOrder(OrderRequest orderRequest) {
 
         Order order = orderRequest.getOrder();
