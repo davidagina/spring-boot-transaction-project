@@ -4,7 +4,7 @@ import com.daveproject.springboot.dto.OrderRequest;
 import com.daveproject.springboot.dto.OrderResponse;
 import org.springframework.stereotype.Service;
 
-@Service
+
 public interface OrderService {
 
     OrderResponse placeOrder(OrderRequest orderRequest);
